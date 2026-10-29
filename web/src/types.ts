@@ -1,0 +1,11 @@
+export type Quality={state:string;source:string;observed_at?:string;last_success?:string;last_attempt?:string;expected_seconds:number;error?:string};
+export type Metrics={cpu:number|null;memory_percent:number;memory_total:number;memory_available:number;swap_used:number;disk_percent:number;disk_total:number;disk_free:number;extra_disk?:{mount:string;state:string;total?:number;free?:number;percent?:number};load:number[];uptime:number;rx_bytes_sec:number|null;tx_bytes_sec:number|null;cores:number};
+export type Software={name:string;version:string;source:string;observed_at:string};
+export type Inventory={quality:Quality;os:string;kernel:string;architecture:string;cores:number;memory_total:number;disk_total:number;software:Software[];packages?:Software[];package_count:number;note:string;errors?:string[]};
+export type Container={name:string;image:string;state:string;status:string;health:string;ports:string;expected_exit:boolean};
+export type Runtime={quality:Quality;containers:Container[];services:{name:string;scope:string;state:string;sub_state:string}[];compose:{name:string;status:string;path:string}[];probes:{name:string;status:number;state:string;latency_ms:number}[];docker_error?:string;compose_error?:string};
+export type Host={id:string;role:string;address:string;user:string;enabled:boolean;connection:string;metrics:{quality:Quality;values:Metrics|null};runtime:Runtime;inventory:Inventory;collection_ms:number};
+export type Event={id:number;key:string;host:string;severity:string;title:string;detail:string;state:string;first_at:string;last_at:string;resolved_at?:string};
+export type Dependency={id:string;from:string;to:string;label:string;state:string;detail:string;observed_at?:string};
+export type Overview={version:string;fixture:boolean;generated_at:string;hosts:Host[];events:Event[];dependencies:Dependency[];degraded:boolean;rollout:{enabled:number;max_hosts:number;phase_started:string;state:string;reason?:string;all_enabled_at?:string;observation_due?:string;stage_seconds:number};resource:{memory_bytes:number;available_bytes:number;cpu_percent_one_core:number;cpu_15m_percent_one_core:number;litellm_health_status:number;fixture:boolean}};
+export type Point={at:string;values:Metrics|null};

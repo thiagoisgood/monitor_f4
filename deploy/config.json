@@ -1,0 +1,1 @@
+{"bind":"127.0.0.1:18090","data_dir":"/var/lib/fleet-monitor","ssh_key":"/home/monitor/.ssh/id_ed25519","known_hosts":"/home/monitor/.ssh/known_hosts","stage_seconds":900,"max_hosts":4,"rollout_mode":"manual","fixture":false}

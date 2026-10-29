@@ -1,0 +1,55 @@
+[Unit]
+Description=JOOO read-only four-host fleet monitor
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=monitor
+Group=monitor
+SupplementaryGroups=docker
+WorkingDirectory=/opt/fleet-monitor
+StateDirectory=fleet-monitor
+StateDirectoryMode=0700
+UMask=0077
+Environment=GOMEMLIMIT=64MiB
+Environment=GOMAXPROCS=1
+Environment=XDG_RUNTIME_DIR=/run/user/REPLACE_UID
+ExecStartPre=/opt/fleet-monitor/fleet-monitor preflight -config /opt/fleet-monitor/config.json
+ExecStart=/opt/fleet-monitor/fleet-monitor -config /opt/fleet-monitor/config.json
+ExecStopPost=/opt/fleet-monitor/record-exit.sh
+TimeoutStartSec=330
+TimeoutStopSec=15
+Restart=no
+MemoryAccounting=yes
+MemoryHigh=96M
+MemoryMax=128M
+MemorySwapMax=0
+CPUAccounting=yes
+CPUQuota=10%
+CPUWeight=10
+Nice=10
+IOSchedulingClass=idle
+TasksMax=64
+OOMScoreAdjust=500
+OOMPolicy=stop
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/var/lib/fleet-monitor
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+RestrictSUIDSGID=yes
+RestrictRealtime=yes
+LockPersonality=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+StandardOutput=null
+StandardError=journal
+LogRateLimitIntervalSec=60
+LogRateLimitBurst=10
+
+[Install]
+WantedBy=multi-user.target

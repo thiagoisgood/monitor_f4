@@ -1,0 +1,11 @@
+web/node_modules/
+web/dist/assets/
+web/dist/index.html
+build/
+*.db
+*.db-journal
+evidence/*.jsonl
+evidence/*.log
+
+web/dist/
+web/*.tsbuildinfo

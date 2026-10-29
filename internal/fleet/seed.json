@@ -1,0 +1,59 @@
+{
+  "source": "example only",
+  "version": "redacted",
+  "dataQuality": "historical_inventory_not_live",
+  "hosts": [
+    {
+      "id": "t1",
+      "os": "示例",
+      "kernel": "",
+      "cores": 2,
+      "memory": 4,
+      "disk": 40,
+      "date": "",
+      "software": [],
+      "containers": [],
+      "compose": [],
+      "note": "占位数据，需配置实际采集。"
+    },
+    {
+      "id": "t2",
+      "os": "示例",
+      "kernel": "",
+      "cores": 2,
+      "memory": 4,
+      "disk": 40,
+      "date": "",
+      "software": [],
+      "containers": [],
+      "compose": [],
+      "note": "占位数据，需配置实际采集。"
+    },
+    {
+      "id": "t3",
+      "os": "示例",
+      "kernel": "",
+      "cores": 2,
+      "memory": 4,
+      "disk": 40,
+      "date": "",
+      "software": [],
+      "containers": [],
+      "compose": [],
+      "note": "占位数据，需配置实际采集。"
+    },
+    {
+      "id": "ali_cjlass",
+      "os": "示例",
+      "kernel": "",
+      "cores": 2,
+      "memory": 4,
+      "disk": 40,
+      "date": "",
+      "software": [],
+      "containers": [],
+      "compose": [],
+      "note": "占位数据，需配置实际采集。"
+    }
+  ]
+}
